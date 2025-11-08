@@ -1,0 +1,104 @@
+/* Simple, modern, responsive UI with dark/light theme toggle support */
+:root{
+  --bg: #f5f8fb;
+  --card: #fff;
+  --text: #1e1e2f;
+  --muted: #666;
+  --primary: #0066ff;
+  --danger: #ff4d4d;
+  --success: #28a745;
+  --mid: #ffb020;
+  --shadow: 0 6px 18px rgba(20,30,80,0.06);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  min-height:100vh;
+}
+
+/* Header */
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:18px 28px;
+  background:linear-gradient(90deg,var(--primary),#5b8cff);
+  color:#fff;
+  box-shadow:var(--shadow);
+}
+.navbar h1{margin:0;font-size:1.05rem;display:flex;align-items:center;gap:10px}
+.nav-right{display:flex;align-items:center;gap:10px}
+.kpis{display:flex;gap:12px;margin-left:18px;align-items:center;}
+.kpi{background:rgba(255,255,255,0.08);padding:8px 12px;border-radius:10px;font-size:0.9rem}
+
+/* Buttons */
+button{cursor:pointer;border:0;padding:8px 12px;border-radius:8px;font-weight:600}
+.primary{background:var(--text);color:#fff}
+.ghost{background:transparent;border:1px solid rgba(255,255,255,0.15);color:#fff}
+.danger{background:var(--danger);color:#fff}
+
+/* Page layout */
+.container{max-width:1200px;margin:22px auto;padding:0 16px;display:flex;flex-direction:column;gap:18px}
+.card{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+.control-card{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.control-left{display:flex;gap:8px;align-items:center}
+.control-right{display:flex;gap:8px;align-items:center}
+
+/* Inputs */
+input[type="file"]{padding:6px}
+input[type="search"], input[type="text"], input[type="number"]{
+  padding:9px 12px;border-radius:8px;border:1px solid #e6eefc;min-width:150px;
+}
+select{padding:9px 12px;border-radius:8px;border:1px solid #e6eefc}
+
+/* Add form grid */
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;align-items:center}
+.add-card h3{margin:0 0 10px 0}
+
+/* Table */
+.table-container{overflow:auto;max-height:420px}
+table{width:100%;border-collapse:collapse;min-width:700px}
+thead th{position:sticky;top:0;background:linear-gradient(90deg,#f8fbff,#eef6ff);padding:12px;border-bottom:1px solid #edf3ff;text-align:left}
+tbody td{padding:12px;border-bottom:1px solid #f1f6ff}
+tr.low-attendance{background:#fff0f0;color:var(--danger);font-weight:700}
+tr.mid-attendance{background:#fff8ed;color:var(--mid)}
+tr.high-attendance{background:#f2fff4;color:var(--success)}
+.table-actions{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+
+/* Charts */
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.chart-box{padding:12px;background:#fbfdff;border-radius:10px;box-shadow:0 3px 8px rgba(10,20,60,0.04)}
+
+/* Footer */
+.footer{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 18px;margin:18px 0;background:transparent;color:var(--muted);font-size:13px}
+
+/* Legend dots */
+.legend .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.legend .good{background:var(--success)}.legend .mid{background:var(--mid)}.legend .low{background:var(--danger)}
+
+/* Modal */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.35)}
+.modal-content{background:white;padding:18px;border-radius:12px;max-width:520px;width:95%;position:relative}
+.modal-close{position:absolute;right:10px;top:8px;border-radius:6px;background:#f1f1f1;padding:6px}
+
+/* Theme toggle */
+.toggle{position:relative;display:inline-block;width:48px;height:28px}
+.toggle input{display:none}
+.slider{position:absolute;cursor:pointer;inset:0;background:#ccc;border-radius:28px}
+.slider:before{content:"";position:absolute;left:4px;top:4px;width:20px;height:20px;background:white;border-radius:50%;transition:all .2s}
+.toggle input:checked + .slider{background:var(--text)}
+.toggle input:checked + .slider:before{transform:translateX(20px)}
+
+/* Responsive */
+@media(max-width:900px){
+  .charts-grid{grid-template-columns:1fr}
+  .kpis{display:none}
+  .control-right{flex-basis:100%;justify-content:flex-start;gap:6px}
+}
