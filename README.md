@@ -3,6 +3,7 @@
 A simple web-based dashboard for managing and visualizing attendance data.
 Built using HTML, CSS, and JavaScript, this project provides an interactive interface to track and display attendance summaries in a clean, responsive layout.
 
+Live preview : https://amitalgorhythm.github.io/attendanceDashboard/
 🚀 Features
 
 📊 View and manage attendance records
