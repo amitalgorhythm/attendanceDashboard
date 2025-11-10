@@ -1,65 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advanced Attendance Analytics Dashboard</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📊 Advanced Attendance Dashboard</title>
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
 
-  <!-- External Libraries -->
+  <!-- Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
-
-  <!-- ========================
-       Header / Navigation Bar
-       ======================== -->
+  <!-- Header -->
   <header class="navbar">
     <div class="nav-left">
       <h1>🎓 Campus Attendance Dashboard</h1>
-
-      <!-- KPI Cards Container -->
-      <div id="kpiContainer" class="kpis">
-        <!-- Cards injected dynamically by JS -->
-      </div>
+      <div id="kpiContainer" class="kpis"></div>
     </div>
 
     <div class="nav-right">
-      <!-- Theme Toggle -->
       <label class="toggle">
-        <input type="checkbox" id="themeToggle">
+        <input type="checkbox" id="themeToggle" />
         <span class="slider"></span>
       </label>
-
-      <!-- Action Buttons -->
       <button id="downloadCsvBtn" class="ghost">Download CSV</button>
       <button id="exportPDF" class="primary">Export PDF</button>
     </div>
   </header>
 
-  <!-- ========================
-       Main Content
-       ======================== -->
+  <!-- Main -->
   <main class="container">
-
-    <!-- ------------------------
-         Controls Section
-         ------------------------ -->
+    <!-- Controls -->
     <section class="card control-card">
-      <div class="control-left">
-        <input type="file" id="csvFile" accept=".csv">
+      <div class="control-group">
+        <input type="file" id="csvFile" accept=".csv" />
         <button id="loadSample" class="ghost">Load Sample</button>
-        <button id="generateBtn" class="primary">Generate Dashboard</button>
+        <button id="generateBtn" class="primary">Generate</button>
       </div>
 
-      <div class="control-right">
-        <input type="search" id="searchInput" placeholder="Search student or ID...">
+      <div class="control-group">
+        <input type="search" id="searchInput" placeholder="Search by name or ID..." />
         <select id="deptFilter">
           <option value="">All Departments</option>
         </select>
@@ -69,32 +53,26 @@
           <option value="medium">75-85%</option>
           <option value="high">&gt;85%</option>
         </select>
-        <button id="clearStorage" class="danger ghost">Clear Saved Data</button>
+        <button id="clearStorage" class="danger ghost">Clear Data</button>
       </div>
     </section>
 
-    <!-- ------------------------
-         Add Student Record
-         ------------------------ -->
+    <!-- Add Record -->
     <section class="card add-card">
       <h3>Add Student Attendance</h3>
       <div class="form-grid">
-        <input type="text" id="id" placeholder="Student ID">
-        <input type="text" id="name" placeholder="Full Name">
-        <input type="text" id="dept" placeholder="Department (e.g. MCA)">
-        <input type="number" id="total" placeholder="Total Classes">
-        <input type="number" id="attended" placeholder="Attended Classes">
+        <input type="text" id="id" placeholder="Student ID" />
+        <input type="text" id="name" placeholder="Full Name" />
+        <input type="text" id="dept" placeholder="Department" />
+        <input type="number" id="total" placeholder="Total Classes" />
+        <input type="number" id="attended" placeholder="Attended Classes" />
         <button id="addRecordBtn" class="primary">Add Record</button>
       </div>
     </section>
 
-    <!-- ------------------------
-         Attendance Table
-         ------------------------ -->
+    <!-- Table -->
     <section class="card table-card">
       <h3>Attendance Overview</h3>
-
-      <!-- Table Actions -->
       <div class="table-actions">
         <small id="rowsInfo"></small>
         <div>
@@ -109,41 +87,30 @@
             <tr>
               <th>ID</th>
               <th>Name</th>
-              <th>Department</th>
+              <th>Dept</th>
               <th>Total</th>
               <th>Attended</th>
-              <th>Attendance %</th>
+              <th>%</th>
             </tr>
           </thead>
-          <tbody>
-            <!-- Data injected dynamically -->
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </section>
 
-    <!-- ------------------------
-         Analytics Charts
-         ------------------------ -->
+    <!-- Charts -->
     <section class="card chart-card">
       <h3>Analytics Summary</h3>
       <div class="charts-grid">
-        <div class="chart-box">
-          <canvas id="departmentChart"></canvas>
-        </div>
-        <div class="chart-box">
-          <canvas id="trendChart"></canvas>
-        </div>
+        <div class="chart-box"><canvas id="departmentChart"></canvas></div>
+        <div class="chart-box"><canvas id="trendChart"></canvas></div>
       </div>
     </section>
-
   </main>
 
-  <!-- ========================
-       Footer
-       ======================== -->
+  <!-- Footer -->
   <footer class="footer">
-    <div>Made with ❤️ by Amit Kumar — MCA Project</div>
+    <p>Made with ❤️ by Amit Kumar — MCA Project</p>
     <div class="legend">
       <span class="dot good"></span> &gt;85%
       <span class="dot mid"></span> 75–85%
@@ -151,9 +118,7 @@
     </div>
   </footer>
 
-  <!-- ========================
-       Modal for Student Details
-       ======================== -->
+  <!-- Modal -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <button id="modalClose" class="modal-close">✕</button>
@@ -163,7 +128,5 @@
 
   <!-- Script -->
   <script src="script.js"></script>
-
 </body>
-
 </html>
